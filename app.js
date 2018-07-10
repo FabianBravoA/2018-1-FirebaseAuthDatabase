@@ -38,3 +38,11 @@ function login(){
             console.log("Error de firebase, mensaje > "+error.message);
         });
 }
+
+function logout(){
+    firebase.auth().signOut()
+        .then(()=>{
+            console.log("Chao");
+        })
+        .catch();
+}
