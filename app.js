@@ -46,3 +46,19 @@ function logout(){
         })
         .catch();
 }
+
+function loginFacebook(){
+    const provider = new firebase.auth.FacebookAuthProvider();
+    //provider.addScope("user_birthday"); tienen que pedirle permiso a facebook
+    provider.setCustomParameters({
+        'display': 'popup'
+    }); 
+    firebase.auth().signInWithPopup(provider)
+        .then(()=>{
+            console.log("Login con facebook");
+        })
+        .catch((error)=>{
+            console.log("Error de firebase > "+error.code);
+            console.log("Error de firebase, mensaje > "+error.message);
+        });
+}
